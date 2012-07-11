@@ -11,6 +11,7 @@ class Character
   property :region,     String
   property :realm,      String
   property :character,  String
+  property :img_url,    String
   property :created_at, DateTime
   property :updated_at, DateTime
 end
