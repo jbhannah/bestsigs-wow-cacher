@@ -40,7 +40,7 @@ a forum signature or on a web page.
 
 A BBCode usage sample:
 
-    [URL=http://us.battle.net/wow/en/character/earthen-ring/Adarystus/advanced][IMG=http://bestsigs-wow-cacher.herokuapp.com/us/Earthen Ring/Adarystus.png][/URL]
+    [URL="http://us.battle.net/wow/en/character/earthen-ring/Adarystus/"][IMG="http://bestsigs-wow-cacher.herokuapp.com/us/Earthen Ring/Adarystus.png"][/URL]
 
 What it doesn't do yet
 ----------------------
