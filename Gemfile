@@ -7,6 +7,8 @@ gem 'thin'
 gem 'data_mapper'
 gem 'json'
 
+gem 'activesupport'
+
 group :production do
   gem 'dm-postgres-adapter'
 end

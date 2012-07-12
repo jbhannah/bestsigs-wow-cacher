@@ -1,3 +1,4 @@
+require 'active_support/core_ext'
 require 'net/http'
 require 'json'
 
@@ -16,7 +17,11 @@ class Character
   property :updated_at, DateTime
 
   def fetch_img
-    api_uri.to_s
+    if updated_at < 6.hours.ago or img_uri.nil?
+      update_img_uri
+    end
+
+    img_uri.to_s
   end
 
   private
@@ -31,5 +36,12 @@ class Character
     uri.query = URI.encode_www_form(q)
 
     self.api_uri = uri
+  end
+
+  def update_img_uri
+    json = JSON.parse(Net::HTTP.get(api_uri))
+    raise if json["status"] != "ok"
+
+    self.update img_uri: json["link"]
   end
 end
