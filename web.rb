@@ -1,20 +1,7 @@
 require 'rubygems'
 require 'sinatra/base'
-
-require 'net/http'
 require 'data_mapper'
-
-class Character
-  include DataMapper::Resource
-
-  property :id,         Serial
-  property :region,     String
-  property :realm,      String
-  property :character,  String
-  property :img_url,    String
-  property :created_at, DateTime
-  property :updated_at, DateTime
-end
+require './character'
 
 class Web < Sinatra::Base
   configure do
@@ -27,15 +14,12 @@ class Web < Sinatra::Base
   end
 
   get '/:region/:realm/:char' do
-    q = {
+    char = Character.first_or_create({
       region: params[:region],
       realm:  params[:realm],
       char:   params[:char]
-    }
+    })
 
-    uri = URI('http://www.best-signatures.com/api/')
-    uri.query = URI.encode_www_form(q)
-
-    uri.to_s
+    char.fetch_img
   end
 end
