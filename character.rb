@@ -21,7 +21,7 @@ class Character
       update_img_uri
     end
 
-    img_uri.to_s
+    Net::HTTP.get(img_uri)
   end
 
   private
