@@ -38,7 +38,7 @@ class Character
     json = JSON.parse(Net::HTTP.get(api_uri))
     if json["status"] != "ok"
       msg = "API status not ok for #{region}/#{realm}/#{char}"
-      msg += json["msg"] if json["msg"]
+      msg += ": " + json["msg"] if json["msg"]
       raise msg
     end
 
