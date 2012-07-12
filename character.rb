@@ -36,7 +36,7 @@ class Character
 
   def update_img_uri
     json = JSON.parse(Net::HTTP.get(api_uri))
-    raise if json["status"] != "ok"
+    raise "response not ok" if json["status"] != "ok"
 
     self.update img_uri: json["link"]
   end
