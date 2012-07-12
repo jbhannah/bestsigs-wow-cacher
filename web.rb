@@ -13,7 +13,7 @@ class Web < Sinatra::Base
     "Hello world!"
   end
 
-  get '/:region/:realm/:char' do
+  get '/:region/:realm/:char.png' do
     content_type 'image/png'
 
     Character.first_or_create({
