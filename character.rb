@@ -6,11 +6,6 @@ class Character
   before :create, :set_api_uri
 
   property :id,         Serial
-  property :region,     String
-  property :realm,      String
-  property :char,       String
-  property :api_url,    String
-  property :img_url,    String
   property :region,     String, required: true
   property :realm,      String, required: true
   property :char,       String, required: true

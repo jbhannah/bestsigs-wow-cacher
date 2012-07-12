@@ -5,7 +5,6 @@ gem 'foreman'
 gem 'thin'
 
 gem 'data_mapper'
-gem 'json'
 
 group :production do
   gem 'dm-postgres-adapter'
