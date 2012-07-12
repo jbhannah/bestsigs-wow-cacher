@@ -29,7 +29,8 @@ class Character
     q = {
       region: region,
       realm:  realm,
-      char:   char
+      char:   char,
+      type:   "Sign9"
     }
 
     uri = URI('http://www.best-signatures.com/api/')
