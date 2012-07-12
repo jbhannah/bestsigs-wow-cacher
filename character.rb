@@ -17,24 +17,19 @@ class Character
   property :updated_at, DateTime
 
   def fetch_img
-    if updated_at < 6.hours.ago or img_uri.nil?
-      update_img_uri
-    end
-
+    update_img_uri if updated_at < 6.hours.ago or img_uri.empty?
     Net::HTTP.get(img_uri)
   end
 
   private
   def set_api_uri
-    q = {
+    uri = URI('http://www.best-signatures.com/api/')
+    uri.query = URI.encode_www_form({
       region: region,
       realm:  realm,
       char:   char,
       type:   "Sign9"
-    }
-
-    uri = URI('http://www.best-signatures.com/api/')
-    uri.query = URI.encode_www_form(q)
+    })
 
     self.api_uri = uri
   end
