@@ -16,12 +16,10 @@ class Web < Sinatra::Base
   get '/:region/:realm/:char' do
     content_type 'image/png'
 
-    c = Character.first_or_create({
+    Character.first_or_create({
       region: params[:region],
       realm:  params[:realm],
       char:   params[:char]
-    })
-
-    c.fetch_img
+    }).fetch_img
   end
 end
