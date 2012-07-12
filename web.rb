@@ -14,12 +14,12 @@ class Web < Sinatra::Base
   end
 
   get '/:region/:realm/:char' do
-    char = Character.first_or_create({
+    c = Character.first_or_create({
       region: params[:region],
       realm:  params[:realm],
       char:   params[:char]
     })
 
-    char.fetch_img
+    c.fetch_img
   end
 end
