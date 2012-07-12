@@ -18,7 +18,7 @@ requests per character per day.
 What this simple [Sinatra](http://www.sinatrarb.com/) app does is:
 
   1. Take a region, realm, and character name as part of the URL (e.g.,
-     bestsigs-wow-cacher.herokuapp.com/us/Earthen+Ring/Adarystus.png),
+     `http://bestsigs-wow-cacher.herokuapp.com/us/Earthen+Ring/Adarystus.png`),
      and builds an API request URI.
 
   2. Make a request to the Best Signatures API, which causes a signature
@@ -28,6 +28,15 @@ What this simple [Sinatra](http://www.sinatrarb.com/) app does is:
   3. Serve up the generated image from the stored URI, and doesn't make
      any more API requests for that character for the next six hours,
      resulting in a maximum of four API requests per character per day.
+
+What the image URLs look like:
+
+    http://bestsigs-wow-cacher.herokuapp.com/us/Earthen Ring/Adarystus
+
+Replace `us` with your region (e.g., `eu`, `kr`). Replace `Earthen Ring`
+with your realm name (e.g. `Spinebreaker`). Replace `Adarystus` with
+your character name (e.g. `Vqshorkhas`). Use the URL in an image tag in
+a forum signature or on a web page.
 
 A BBCode usage sample:
 
