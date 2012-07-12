@@ -88,5 +88,6 @@ DEPENDENCIES
   dm-postgres-adapter
   dm-sqlite-adapter
   foreman
+  json
   sinatra
   thin
