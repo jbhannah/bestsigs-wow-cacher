@@ -17,7 +17,7 @@ class Character
   property :updated_at, DateTime
 
   def fetch_img
-    update_img_uri if updated_at < 6.hours.ago or img_uri.empty?
+    update_img_uri if updated_at < 6.hours.ago or img_uri.nil?
     Net::HTTP.get(img_uri)
   end
 
