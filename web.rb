@@ -9,8 +9,10 @@ class Web < Sinatra::Base
     DataMapper.auto_upgrade!
   end
 
+  set :haml, format: :html5
+
   get '/' do
-    "Hello world!"
+    haml :index
   end
 
   get '/:region/:realm/:char.png' do
