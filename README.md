@@ -34,7 +34,7 @@ How to use it
 
 What the image URLs look like:
 
-    http://bestsigs-wow-cacher.herokuapp.com/us/Earthen Ring/Adarystus
+    http://bestsigs-wow-cacher.herokuapp.com/us/Earthen Ring/Adarystus.png
 
 Replace `us` with your region (e.g., `eu`, `kr`). Replace `Earthen Ring`
 with your realm name (e.g. `Spinebreaker`). Replace `Adarystus` with
