@@ -6,6 +6,7 @@ gem 'thin'
 
 gem 'data_mapper'
 gem 'json'
+gem 'haml'
 
 gem 'activesupport'
 
