@@ -19,15 +19,19 @@ What this simple [Sinatra](http://www.sinatrarb.com/) app does is:
 
   1. Take a region, realm, and character name as part of the URL (e.g.,
      `http://bestsigs-wow-cacher.herokuapp.com/us/Earthen+Ring/Adarystus.png`),
-     and builds an API request URI.
+     and builds a Best Signatures API request URI.
 
   2. Make a request to the Best Signatures API, which causes a signature
-     image to be generated and saved, and stores the URI of the
-     generated image.
+     image to be generated and saved, and caches the URI of the
+     generated image for the character.
 
-  3. Serve up the generated image from the stored URI, and doesn't make
-     any more API requests for that character for the next six hours,
-     resulting in a maximum of four API requests per character per day.
+  3. Serve up the generated image from the cached URI for the character
+     for the next few hours.
+
+  4. After a time delay (currently six hours), makes another API request
+     the next time the character's image is requested, generating a new
+     image, and caches the new image's URI (replacing the URI of the old
+     image).
 
 How to use it
 -------------
