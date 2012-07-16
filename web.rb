@@ -16,10 +16,17 @@ class Web < Sinatra::Base
   get '/:region/:realm/:char.png' do
     content_type 'image/png'
 
-    Character.first_or_create({
+    c = Character.first_or_create({
       region: params[:region],
       realm:  params[:realm],
       char:   params[:char]
-    }).fetch_img
+    })
+
+    begin
+      c.fetch_img
+    rescue APINotOkError
+      c.destroy
+      404
+    end
   end
 end

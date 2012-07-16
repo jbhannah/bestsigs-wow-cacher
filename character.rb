@@ -2,6 +2,9 @@ require 'active_support/core_ext'
 require 'net/http'
 require 'json'
 
+class APINotOkError < StandardError
+end
+
 class Character
   include DataMapper::Resource
 
@@ -44,7 +47,7 @@ class Character
     if json["status"] != "ok"
       msg = "API status not ok for #{region}/#{realm}/#{char}"
       msg += ": " + json["msg"] if json["msg"]
-      raise msg
+      raise APINotOkError, msg
     end
 
     self.update img_uri: json["link"]
