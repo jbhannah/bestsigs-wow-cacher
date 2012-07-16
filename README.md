@@ -53,3 +53,8 @@ What it doesn't do yet
 
   * Let you force it to refresh. Depending on performance, I may shorten
     the refresh time to come closer to the API rate limit.
+
+  * Cache the actual signature image; it just downloads and regurgitates
+    the image from the URL provided in the API response. Not the most
+    efficient, I know; I'll come up with something faster (and still
+    free) soon enough.
