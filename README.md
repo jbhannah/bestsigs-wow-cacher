@@ -32,6 +32,10 @@ What this simple [Sinatra](http://www.sinatrarb.com/) app does is:
 How to use it
 -------------
 
+The [homepage](http://bestsigs-wow-cacher.herokuapp.com/) now includes a
+URL form that can be used to generate the image URL given the region,
+realm name, and character name.
+
 What the image URLs look like:
 
     http://bestsigs-wow-cacher.herokuapp.com/us/Earthen Ring/Adarystus.png
