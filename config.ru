@@ -1,2 +1,5 @@
-require './web'
+$:.unshift File.dirname(__FILE__)
+$:.unshift File.join(File.dirname(__FILE__), 'lib')
+
+require 'web'
 run Web

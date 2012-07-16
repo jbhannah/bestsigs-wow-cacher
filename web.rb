@@ -1,7 +1,7 @@
 require 'rubygems'
 require 'sinatra/base'
 require 'data_mapper'
-require './character'
+require 'character'
 
 class Web < Sinatra::Base
   configure do
