@@ -5,6 +5,7 @@ require 'json'
 class Character
   include DataMapper::Resource
 
+  before :create, :cleanup
   before :create, :set_api_uri
 
   property :id,         Serial
@@ -22,6 +23,10 @@ class Character
   end
 
   private
+  def cleanup
+    Character.all(:updated_at.lt => 1.week.ago).each { |c| c.destroy } if Character.count > 5000
+  end
+
   def set_api_uri
     uri = URI('http://www.best-signatures.com/api/')
     uri.query = URI.encode_www_form({
