@@ -29,6 +29,9 @@ What this simple [Sinatra](http://www.sinatrarb.com/) app does is:
      any more API requests for that character for the next six hours,
      resulting in a maximum of four API requests per character per day.
 
+How to use it
+-------------
+
 What the image URLs look like:
 
     http://bestsigs-wow-cacher.herokuapp.com/us/Earthen Ring/Adarystus
@@ -41,6 +44,10 @@ a forum signature or on a web page.
 A BBCode usage sample:
 
     [URL="http://us.battle.net/wow/en/character/earthen-ring/Adarystus/"][IMG="http://bestsigs-wow-cacher.herokuapp.com/us/Earthen Ring/Adarystus.png"][/URL]
+
+What the image looks like:
+
+![US-Earthen Ring/Adarystus](http://bestsigs-wow-cacher.herokuapp.com/us/Earthen%20Ring/Adarystus.png)
 
 What it doesn't do yet
 ----------------------
