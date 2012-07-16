@@ -3,6 +3,9 @@
 %html
   %head
     %title Best Signatures WoW Character Image Auto-Updater
+
+    %script{ src: "http://rightjs.org/hotlink/right.js" }
+    %script{ src: url("/script.js") }
   %body
     %a{ href: "https://github.com/jbhannah/bestsigs-wow-cacher/", target: "_blank" }
       %img{ src: "https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png",
@@ -17,7 +20,7 @@
       %a{ href: "http://us.battle.net/wow/" } World of Warcraft
       characters. Use the form below to get your character's image URL.
 
-    %form{ type: "post", action: url("/get-character-url") }
+    %form#character_form{ type: "post", action: url("/get-character-url") }
       %p
         %label{ for: "region" } Region:
         %select#region{ name: "region" }
@@ -37,3 +40,5 @@
 
       %p
         %input{ type: "submit", value: "Get URL" }
+
+    #msg
