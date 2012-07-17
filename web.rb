@@ -16,7 +16,19 @@ class Web < Sinatra::Base
   end
 
   post '/get-character-url' do
-    url("/#{params[:region]}/#{params[:realm]}/#{params[:char]}.png")
+    c = Character.first_or_create({
+      region: params[:region],
+      realm:  params[:realm],
+      char:   params[:char]
+    })
+
+    begin
+      c.update_img_uri
+      url("/#{params[:region]}/#{params[:realm]}/#{params[:char]}.png")
+    rescue APINotOkError => e
+      c.destroy
+      "Something went wrong: " + e.message
+    end
   end
 
   get '/:region/:realm/:char.png' do
