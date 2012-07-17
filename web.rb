@@ -15,7 +15,7 @@ class Web < Sinatra::Base
     haml :index
   end
 
-  get '/get-character-url' do
+  post '/get-character-url' do
     url("/#{params[:region]}/#{params[:realm]}/#{params[:char]}.png")
   end
 

@@ -20,7 +20,7 @@
       %a{ href: "http://us.battle.net/wow/" } World of Warcraft
       characters. Use the form below to get your character's image URL.
 
-    %form#character_form{ type: "post", action: url("/get-character-url") }
+    %form#character_form{ method: "post", action: url("/get-character-url") }
       %p
         %label{ for: "region" } Region:
         %select#region{ name: "region" }
