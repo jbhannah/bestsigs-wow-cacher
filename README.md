@@ -28,10 +28,10 @@ What this simple [Sinatra](http://www.sinatrarb.com/) app does is:
   3. Serve up the generated image from the cached URI for the character
      for the next few hours.
 
-  4. After a time delay (currently six hours), makes another API request
-     the next time the character's image is requested, generating a new
-     image, and caches the new image's URI (replacing the URI of the old
-     image).
+  4. After a time delay (currently three hours), makes another API
+     request the next time the character's image is requested,
+     generating a new image, and caches the new image's URI (replacing
+     the URI of the old image).
 
 How to use it
 -------------

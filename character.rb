@@ -22,7 +22,7 @@ class Character
 
   def fetch_img
     begin
-      update_img_uri if updated_at < 6.hours.ago or img_uri.nil?
+      update_img_uri if updated_at < 3.hours.ago or img_uri.nil?
     rescue Exception => e
       raise e if img_uri.nil?
     end
