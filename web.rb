@@ -24,7 +24,9 @@ class Web < Sinatra::Base
 
     begin
       c.update_img_uri
-      url("/#{params[:region]}/#{params[:realm]}/#{params[:char]}.png")
+
+      @url = url("/#{params[:region]}/#{params[:realm]}/#{params[:char]}.png")
+      haml :get_character_url
     rescue APINotOkError => e
       c.destroy
       "Something went wrong: " + e.message
