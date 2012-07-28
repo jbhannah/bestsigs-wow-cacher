@@ -22,7 +22,7 @@ class Character
 
   def fetch_img
     begin
-      update_img_uri if updated_at < 3.hours.ago or img_uri.nil?
+      update_img_uri
     rescue Exception => e
       raise e if img_uri.nil?
     end
@@ -30,6 +30,8 @@ class Character
   end
 
   def update_img_uri
+    return unless updated_at < 3.hours.ago or img_uri.nil?
+
     json = JSON.parse(Net::HTTP.get(api_uri))
     if json["status"] != "ok"
       msg = "API status not ok for #{region}/#{realm}/#{char}"
