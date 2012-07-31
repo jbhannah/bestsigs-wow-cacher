@@ -40,7 +40,8 @@ How to use it
 
 The [homepage](http://bestsigs-wow-cacher.herokuapp.com/) now includes
 an HTML form that can be used to generate the image URL given the
-region, realm name, and character name.
+region, realm name, and character name, as well as a BBCode snippet that
+can be used directly in a forum post or signature.
 
 What the image URLs look like:
 
@@ -53,7 +54,7 @@ a forum signature or on a web page.
 
 A BBCode usage sample:
 
-    [URL="http://us.battle.net/wow/en/character/earthen-ring/Adarystus/"][IMG="http://bestsigs-wow-cacher.herokuapp.com/us/Earthen Ring/Adarystus.png"][/URL]
+    [url="http://us.battle.net/wow/en/character/Earthen Ring/Adarystus/"][img]http://bestsigs-wow-cacher.herokuapp.com/us/Earthen Ring/Adarystus.png[/img][/url]
 
 What the image looks like:
 

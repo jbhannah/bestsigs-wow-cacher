@@ -1,6 +1,6 @@
 %p The URL for your character's image is:
 
-%blockquote= @url
+%input{ type: :text, readonly: true, size: 75, value: @url }
 
 %p
   This image will update periodically, so it should never be more than
@@ -9,3 +9,10 @@
 
 %p
   %img{ src: @url }
+
+%p
+  You can copy and paste the following BBCode snippet to link your
+  character's image to its Armory profile in a forum post or signature:
+
+%p
+  %textarea{ readonly: true, cols: 120, rows: 3 }= @bbcode

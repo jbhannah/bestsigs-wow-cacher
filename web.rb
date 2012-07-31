@@ -25,7 +25,13 @@ class Web < Sinatra::Base
     begin
       c.update_img_uri
 
-      @url = url("/#{params[:region]}/#{params[:realm]}/#{params[:char]}.png")
+      @url = url("/#{c.region}/#{c.realm}/#{c.char}.png")
+      armory_url = "http://#{c.region}.battle.net/wow/en/character/#{c.realm}/#{c.char}/"
+
+      @bbcode  = "[url=\"#{armory_url}\"]"
+      @bbcode += "[img]#{@url}[/img]"
+      @bbcode += "[/url]"
+
       haml :get_character_url
     rescue APINotOkError => e
       c.destroy
