@@ -1,5 +1,4 @@
 require 'active_support/core_ext'
-require 'active_support/multibyte/chars'
 require 'net/http'
 require 'json'
 
