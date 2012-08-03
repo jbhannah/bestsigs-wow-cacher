@@ -5,6 +5,7 @@ gem 'foreman'
 gem 'thin'
 
 gem 'data_mapper'
+gem 'aws-sdk'
 gem 'json'
 gem 'haml'
 

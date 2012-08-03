@@ -26,7 +26,8 @@ class Character
     rescue Exception => e
       raise e if img_uri.nil?
     end
-    Net::HTTP.get(img_uri)
+
+    img_s3.read
   end
 
   def update_img_uri
@@ -40,6 +41,7 @@ class Character
     end
 
     self.update img_uri: json["link"]
+    img_s3.write(Net::HTTP.get(img_uri))
   end
 
   private
@@ -57,5 +59,9 @@ class Character
     })
 
     self.api_uri = uri
+  end
+
+  def img_s3
+    $bucket.objects["#{region}/#{realm}/#{char}.png"]
   end
 end
