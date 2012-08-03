@@ -1,6 +1,7 @@
 require 'rubygems'
 require 'sinatra/base'
 require 'data_mapper'
+require 'active_support/multibyte/chars'
 require 'aws/s3'
 require 'character'
 
@@ -27,9 +28,9 @@ class Web < Sinatra::Base
 
   post '/get-character-url' do
     c = Character.first_or_create({
-      region: params[:region],
-      realm:  params[:realm],
-      char:   params[:char]
+      region: params[:region].downcase,
+      realm:  params[:realm].titleize,
+      char:   params[:char].titleize
     })
 
     begin
@@ -53,9 +54,9 @@ class Web < Sinatra::Base
     content_type 'image/png'
 
     c = Character.first_or_create({
-      region: params[:region],
-      realm:  params[:realm],
-      char:   params[:char]
+      region: params[:region].downcase,
+      realm:  params[:realm].titleize,
+      char:   params[:char].titleize
     })
 
     begin

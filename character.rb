@@ -1,4 +1,5 @@
 require 'active_support/core_ext'
+require 'active_support/multibyte/chars'
 require 'net/http'
 require 'json'
 
@@ -9,6 +10,7 @@ class Character
   include DataMapper::Resource
 
   before :create, :cleanup
+  before :create, :titleize
 
   property :id,         Serial
   property :region,     String, required: true
@@ -43,6 +45,12 @@ class Character
   private
   def cleanup
     Character.all(:updated_at.lt => 1.week.ago).each { |c| c.destroy } if Character.count > 5000
+  end
+
+  def titleize
+    self.region = region.downcase
+    self.realm  = realm.titleize
+    self.char   = char.titleize
   end
 
   def api_uri
