@@ -9,29 +9,26 @@ class Character
   include DataMapper::Resource
 
   before :create, :cleanup
-  before :create, :set_api_uri
 
   property :id,         Serial
   property :region,     String, required: true
   property :realm,      String, required: true
   property :char,       String, required: true
-  property :api_uri,    URI
-  property :img_uri,    URI
   property :created_at, DateTime
   property :updated_at, DateTime
 
   def fetch_img
     begin
-      update_img_uri
+      update_img
     rescue Exception => e
-      raise e if img_uri.nil?
+      raise e unless img_s3.exists?
     end
 
     img_s3.read
   end
 
-  def update_img_uri
-    return unless updated_at < 3.hours.ago or img_uri.nil?
+  def update_img
+    return unless updated_at < 3.hours.ago or not img_s3.exists?
 
     json = JSON.parse(Net::HTTP.get(api_uri))
     if json["status"] != "ok"
@@ -40,8 +37,7 @@ class Character
       raise APINotOkError, msg
     end
 
-    self.update img_uri: json["link"]
-    img_s3.write(Net::HTTP.get(img_uri))
+    img_s3.write(Net::HTTP.get URI(json["link"]))
   end
 
   private
@@ -49,7 +45,7 @@ class Character
     Character.all(:updated_at.lt => 1.week.ago).each { |c| c.destroy } if Character.count > 5000
   end
 
-  def set_api_uri
+  def api_uri
     uri = URI('http://www.best-signatures.com/api/')
     uri.query = URI.encode_www_form({
       region: region,
@@ -58,7 +54,7 @@ class Character
       type:   "Sign9"
     })
 
-    self.api_uri = uri
+    return uri
   end
 
   def img_s3

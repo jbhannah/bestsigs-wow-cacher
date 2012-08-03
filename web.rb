@@ -7,7 +7,7 @@ require 'character'
 class Web < Sinatra::Base
   configure do
     DataMapper.setup(:default, (ENV["DATABASE_URL"] || "sqlite3:///#{Dir.pwd}/development.sqlite3"))
-    DataMapper.auto_upgrade!
+    DataMapper.auto_migrate!
 
     s3 = AWS::S3.new(
       access_key_id:     ENV["AWS_ACCESS_KEY_ID"],
@@ -33,7 +33,7 @@ class Web < Sinatra::Base
     })
 
     begin
-      c.update_img_uri
+      c.update_img
 
       @url = url("/#{c.region}/#{c.realm}/#{c.char}.png")
       armory_url = "http://#{c.region}.battle.net/wow/en/character/#{c.realm}/#{c.char}/"
