@@ -2,8 +2,8 @@ source :rubygems
 
 gem 'sinatra'
 gem 'sinatra-synchrony'
-gem 'foreman'
-gem 'thin'
+
+gem 'unicorn'
 
 gem 'data_mapper'
 gem 'aws-sdk'
@@ -17,5 +17,6 @@ group :production do
 end
 
 group :development do
+  gem 'foreman'
   gem 'dm-sqlite-adapter'
 end
