@@ -1,6 +1,7 @@
 source :rubygems
 
 gem 'sinatra'
+gem 'sinatra-synchrony'
 gem 'foreman'
 gem 'thin'
 

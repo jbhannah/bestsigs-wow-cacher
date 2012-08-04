@@ -1,11 +1,14 @@
 require 'rubygems'
 require 'sinatra/base'
+require 'sinatra/synchrony'
 require 'data_mapper'
 require 'active_support/multibyte/chars'
 require 'aws/s3'
 require 'character'
 
 class Web < Sinatra::Base
+  register Sinatra::Synchrony
+
   configure do
     DataMapper.setup(:default, (ENV["DATABASE_URL"] || "sqlite3:///#{Dir.pwd}/development.sqlite3"))
     DataMapper.auto_upgrade!
