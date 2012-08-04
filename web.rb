@@ -30,7 +30,7 @@ class Web < Sinatra::Base
     c = Character.first_or_create({
       region: params[:region].downcase,
       realm:  params[:realm].titleize,
-      char:   params[:char].titleize
+      char:   params[:char].capitalize
     })
 
     begin
@@ -56,7 +56,7 @@ class Web < Sinatra::Base
     c = Character.first_or_create({
       region: params[:region].downcase,
       realm:  params[:realm].titleize,
-      char:   params[:char].titleize
+      char:   params[:char].capitalize
     })
 
     begin

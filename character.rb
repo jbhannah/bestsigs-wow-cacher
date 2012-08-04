@@ -49,7 +49,7 @@ class Character
   def titleize
     self.region = region.downcase
     self.realm  = realm.titleize
-    self.char   = char.titleize
+    self.char   = char.capitalize
   end
 
   def api_uri
