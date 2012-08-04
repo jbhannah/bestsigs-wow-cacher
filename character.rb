@@ -43,6 +43,7 @@ class Character
     end
 
     img_s3.write(Net::HTTP.get URI(json["link"]))
+    self.update updated_at: Time.now
   end
 
   private
