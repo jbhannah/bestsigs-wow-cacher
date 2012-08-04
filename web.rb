@@ -8,7 +8,7 @@ require 'character'
 class Web < Sinatra::Base
   configure do
     DataMapper.setup(:default, (ENV["DATABASE_URL"] || "sqlite3:///#{Dir.pwd}/development.sqlite3"))
-    DataMapper.auto_migrate!
+    DataMapper.auto_upgrade!
 
     s3 = AWS::S3.new(
       access_key_id:     ENV["AWS_ACCESS_KEY_ID"],
