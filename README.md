@@ -20,7 +20,7 @@ requests per character per day.
 What this simple [Sinatra](http://www.sinatrarb.com/) app does is:
 
   1. Take a region, realm, and character name as part of the URL (e.g.,
-     `http://bestsigs-wow-cacher.herokuapp.com/us/Earthen+Ring/Adarystus.png`).
+     `http://bestsigs-wow-cacher.herokuapp.com/us/Earthen Ring/Adarystus.png`).
 
   2. Build and make a request to the Best Signatures API, which causes
      a signature image to be generated, then writes the generate image
