@@ -8,8 +8,12 @@ end
 class Character
   include DataMapper::Resource
 
-  before :create, :cleanup
-  before :create, :titleize
+  before :create,  :cleanup
+  before :create,  :titleize
+
+  before :destroy do
+    img_s3.delete
+  end
 
   property :id,         Serial
   property :region,     String, required: true
