@@ -28,6 +28,15 @@ class Web < Sinatra::Base
     haml :index
   end
 
+  get '/stats' do
+    @stats = {
+      count:   Character.count,
+      regions: Character.aggregate(:all.count, fields: [:region]).sort         { |x,y| y[1] <=> x[1] },
+      realms:  Character.aggregate(:all.count, fields: [:region, :realm]).sort { |x,y| y[2] <=> x[2] }
+    }
+    haml :stats
+  end
+
   post '/get-character-url' do
     begin
       c = Character.first_or_create({
