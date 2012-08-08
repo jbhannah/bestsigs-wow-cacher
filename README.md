@@ -47,7 +47,8 @@ What the image URLs look like:
 Replace `us` with your region (e.g., `eu`, `kr`). Replace `Earthen Ring`
 with your realm name (e.g. `Spinebreaker`). Replace `Adarystus` with
 your character name (e.g. `Vqshorkhas`). Use the URL in an image tag in
-a forum signature or on a web page.
+a forum signature or on a web page. Only a single realm and character
+can be specified in an image URL.
 
 A BBCode usage sample:
 
