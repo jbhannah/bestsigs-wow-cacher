@@ -16,9 +16,9 @@ class Character
   end
 
   property :id,         Serial
-  property :region,     String, required: true
+  property :region,     String, required: true, format: /^[a-z]{2}$/
   property :realm,      String, required: true
-  property :char,       String, required: true
+  property :char,       String, required: true, format: /^[A-Z][a-z]*$/
   property :created_at, DateTime
   property :updated_at, DateTime
 

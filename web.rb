@@ -28,13 +28,13 @@ class Web < Sinatra::Base
   end
 
   post '/get-character-url' do
-    c = Character.first_or_create({
-      region: params[:region].downcase,
-      realm:  params[:realm].titleize,
-      char:   params[:char].capitalize
-    })
-
     begin
+      c = Character.first_or_create({
+        region: params[:region].downcase,
+        realm:  params[:realm].titleize,
+        char:   params[:char].capitalize
+      })
+
       c.update_img
 
       @url = url("/#{c.region}/#{c.realm}/#{c.char}.png")
@@ -45,8 +45,8 @@ class Web < Sinatra::Base
       @bbcode += "[/url]"
 
       haml :get_character_url
-    rescue APINotOkError => e
-      c.destroy
+    rescue Exception => e
+      c.destroy if c
       "Something went wrong: " + e.message
     end
   end
@@ -54,16 +54,16 @@ class Web < Sinatra::Base
   get '/:region/:realm/:char.png' do
     content_type 'image/png'
 
-    c = Character.first_or_create({
-      region: params[:region].downcase,
-      realm:  params[:realm].titleize,
-      char:   params[:char].capitalize
-    })
-
     begin
+      c = Character.first_or_create({
+        region: params[:region].downcase,
+        realm:  params[:realm].titleize,
+        char:   params[:char].capitalize
+      })
+
       c.fetch_img
     rescue
-      c.destroy
+      c.destroy if c
       404
     end
   end
