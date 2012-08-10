@@ -29,11 +29,13 @@
       %thead
         %tr
           %th Region
+          %th Realms
           %th Characters
       %tbody
         - @stats[:regions].each do |region|
           %tr
             %td= region[0].upcase
+            %td= region[2].to_s
             %td= region[1].to_s
 
     %h3 Realms

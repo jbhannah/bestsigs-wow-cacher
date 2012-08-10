@@ -34,6 +34,11 @@ class Web < Sinatra::Base
       regions: Character.aggregate(:all.count, fields: [:region]).sort         { |x,y| y[1] <=> x[1] },
       realms:  Character.aggregate(:all.count, fields: [:region, :realm]).sort { |x,y| y[2] <=> x[2] }
     }
+
+    @stats[:regions].each do |region|
+      region << Character.aggregate(:all.count, fields: [:realm], conditions: [ 'region = ?', region[0] ]).count
+    end
+
     haml :stats
   end
 
