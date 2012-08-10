@@ -35,8 +35,8 @@
         - @stats[:regions].each do |region|
           %tr
             %td= region[0].upcase
-            %td= region[2].to_s
-            %td= region[1].to_s
+            %td= region[2]
+            %td= region[1]
 
     %h3 Realms
     %table#realms.sortable
@@ -50,7 +50,7 @@
           %tr
             %td= realm[0].upcase
             %td= realm[1]
-            %td= realm[2].to_s
+            %td= realm[2]
 
     %p
       %a{ href: url("/") } Back to index
