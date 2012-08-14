@@ -3,8 +3,6 @@
 %html
   %head
     %title Best Signatures WoW Character Image Auto-Updater
-
-    %script{ src: url("/sorttable.js") }
   %body
     %a{ href: "https://github.com/jbhannah/bestsigs-wow-cacher/", target: "_blank" }
       %img{ src: "https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png",
@@ -25,7 +23,7 @@
         = @stats[:realms].count
 
     %h3 Regions
-    %table#regions.sortable
+    %table#regions
       %thead
         %tr
           %th Region
@@ -39,7 +37,7 @@
             %td= region[1]
 
     %h3 Realms
-    %table#realms.sortable
+    %table#realms
       %thead
         %tr
           %th Region
