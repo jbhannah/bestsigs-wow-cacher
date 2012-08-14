@@ -66,7 +66,6 @@ class Character
       type:   "Sign9"
     })
 
-    puts uri
     return uri
   end
 
