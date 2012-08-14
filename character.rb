@@ -48,7 +48,7 @@ class Character
 
   private
   def cleanup
-    Character.all(:updated_at.lt => 1.week.ago).each { |c| c.destroy } if Character.count > 5000
+    Character.all(:updated_at.lt => 1.week.ago).each { |c| c.destroy } if Character.count > 9000
   end
 
   def titleize
