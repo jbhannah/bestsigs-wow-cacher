@@ -65,7 +65,7 @@ GEM
     do_sqlite3 (0.10.8)
       data_objects (= 0.10.8)
     fastercsv (1.5.5)
-    foreman (0.53.0)
+    foreman (0.55.0)
       thor (>= 0.13.6)
     haml (3.1.7)
     httparty (0.8.3)
