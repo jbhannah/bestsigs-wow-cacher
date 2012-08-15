@@ -1,7 +1,7 @@
 source :rubygems
 
 gem 'sinatra'
-gem 'unicorn'
+gem 'rainbows'
 
 gem 'activesupport'
 gem 'data_mapper'
