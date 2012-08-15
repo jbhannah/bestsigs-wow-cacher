@@ -11,6 +11,7 @@ gem 'haml'
 
 group :production do
   gem 'dm-postgres-adapter'
+  gem 'newrelic_rpm'
 end
 
 group :development do
