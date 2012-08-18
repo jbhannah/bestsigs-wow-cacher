@@ -82,7 +82,7 @@ GEM
     rack (1.4.1)
     rack-protection (1.2.0)
       rack
-    rainbows (4.3.1)
+    rainbows (4.4.0)
       kgio (~> 2.5)
       rack (~> 1.1)
       unicorn (~> 4.1)
