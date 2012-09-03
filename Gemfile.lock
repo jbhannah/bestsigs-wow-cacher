@@ -71,7 +71,7 @@ GEM
     httparty (0.8.3)
       multi_json (~> 1.0)
       multi_xml
-    i18n (0.6.0)
+    i18n (0.6.1)
     json (1.7.5)
     json_pure (1.7.5)
     kgio (2.7.4)
@@ -82,7 +82,7 @@ GEM
     rack (1.4.1)
     rack-protection (1.2.0)
       rack
-    rainbows (4.4.0)
+    rainbows (4.4.1)
       kgio (~> 2.5)
       rack (~> 1.1)
       unicorn (~> 4.1)
