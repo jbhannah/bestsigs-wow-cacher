@@ -23,14 +23,15 @@ What this simple [Sinatra](http://www.sinatrarb.com/) app does is:
      `http://bestsigs-wow-cacher.herokuapp.com/us/Earthen Ring/Adarystus.png`).
 
   2. Build and make a request to the Best Signatures API, which causes
-     a signature image to be generated, then writes the generate image
+     a signature image to be generated, then writes the generated image
      to an Amazon S3 bucket.
 
   3. Serve up the generated image from Amazon S3 for the character for
      the next few hours.
 
   4. After a time delay (currently three hours), repeats steps 2 and 3
-     to generate and save a new image.
+     to generate and save a new image, overwriting the old image for
+     that character.
 
 How to use it
 -------------
