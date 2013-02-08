@@ -8,6 +8,7 @@ gem 'data_mapper', '~> 1.2.0'
 gem 'aws-sdk', '~> 1.8.1'
 gem 'json', '~> 1.7.6'
 gem 'haml', '~> 3.1.7'
+gem 'maruku', '~> 0.6.1'
 
 group :production do
   gem 'dm-postgres-adapter', '~> 1.2.0'
