@@ -1,7 +1,7 @@
 GEM
   remote: http://rubygems.org/
   specs:
-    activesupport (3.2.11)
+    activesupport (3.2.12)
       i18n (~> 0.6)
       multi_json (~> 1.0)
     addressable (2.2.8)
@@ -68,12 +68,12 @@ GEM
       thor (>= 0.13.6)
     haml (3.1.7)
     i18n (0.6.1)
-    json (1.7.6)
-    json_pure (1.7.6)
+    json (1.7.7)
+    json_pure (1.7.7)
     kgio (2.8.0)
     maruku (0.6.1)
       syntax (>= 1.0.0)
-    multi_json (1.5.0)
+    multi_json (1.5.1)
     newrelic_rpm (3.5.6.46)
     nokogiri (1.5.6)
     rack (1.5.2)
