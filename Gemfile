@@ -1,4 +1,5 @@
-source :rubygems
+source 'https://rubygems.org'
+ruby '2.0.0'
 
 gem 'sinatra', '~> 1.3.4'
 gem 'rainbows', '~> 4.4.3'
