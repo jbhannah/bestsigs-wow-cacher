@@ -68,7 +68,7 @@ GEM
       thor (>= 0.13.6)
     haml (4.0.0)
       tilt
-    i18n (0.6.2)
+    i18n (0.6.4)
     json (1.7.7)
     json_pure (1.7.7)
     kgio (2.8.0)
