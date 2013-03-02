@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 ruby '2.0.0'
 
 gem 'sinatra', '~> 1.3.4'
-gem 'rainbows', '~> 4.5.0'
+gem 'puma', '~> 1.6.3'
 
 gem 'activesupport', '~> 3.2.11'
 gem 'data_mapper', '~> 1.2.0'
