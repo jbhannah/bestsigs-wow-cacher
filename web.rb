@@ -4,6 +4,7 @@ require 'data_mapper'
 require 'active_support/multibyte/chars'
 require 'aws/s3'
 require 'haml'
+require 'maruku'
 require 'character'
 
 class Web < Sinatra::Base
