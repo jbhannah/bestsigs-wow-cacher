@@ -67,6 +67,12 @@ class Web < Sinatra::Base
       @bbcode += "[img]#{@url}[/img]"
       @bbcode += "[/url]"
 
+      if @gabba
+        @gabba.ip(request.ip)
+        @gabba.page_view("Get character URL: #{c.char} (#{c.realm}-#{c.region.upcase})",
+                         request.path + "?region=#{c.region}&realm=#{c.realm}&char=#{c.char}")
+      end
+
       haml :get_character_url
     rescue Exception => e
       c.destroy if c
