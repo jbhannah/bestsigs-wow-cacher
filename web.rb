@@ -12,7 +12,7 @@ class Web < Sinatra::Base
     require 'newrelic_rpm'
     require 'gabba/gabba'
 
-    @gabba = Gabba::Gabba.new(ENV["GA_TRACKING_ID"], "bestsigs-wow-cacher.herokuapp.com")
+    @@gabba = Gabba::Gabba.new(ENV["GA_TRACKING_ID"], "bestsigs-wow-cacher.herokuapp.com")
   end
 
   configure do
@@ -67,9 +67,9 @@ class Web < Sinatra::Base
       @bbcode += "[img]#{@url}[/img]"
       @bbcode += "[/url]"
 
-      if @gabba
-        @gabba.ip(request.ip)
-        @gabba.page_view("Get character URL: #{c.char} (#{c.realm}-#{c.region.upcase})",
+      if @@gabba
+        @@gabba.ip(request.ip)
+        @@gabba.page_view("Get character URL: #{c.char} (#{c.realm}-#{c.region.upcase})",
                          request.path + "?region=#{c.region}&realm=#{c.realm}&char=#{c.char}")
       end
 
@@ -90,9 +90,9 @@ class Web < Sinatra::Base
         char:   params[:char].capitalize
       })
 
-      if @gabba
-        @gabba.ip(request.ip)
-        @gabba.page_view("#{c.char} (#{c.realm}-#{c.region.upcase})", request.path)
+      if @@gabba
+        @@gabba.ip(request.ip)
+        @@gabba.page_view("#{c.char} (#{c.realm}-#{c.region.upcase})", request.path)
       end
 
       c.fetch_img
