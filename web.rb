@@ -92,7 +92,7 @@ class Web < Sinatra::Base
 
       if @@gabba
         @@gabba.ip(request.ip)
-        @@gabba.page_view("#{c.char} (#{c.realm}-#{c.region.upcase})", request.path)
+        @@gabba.page_view("#{c.char} (#{c.realm}-#{c.region.upcase})", "/#{c.region}/#{c.realm}/#{c.char}.png")
       end
 
       c.fetch_img
