@@ -8,7 +8,7 @@
     %script{ src: url("/script.js") }
 
     - if ENV["RACK_ENV"] == "production"
-      %script
+      :javascript
         var _gaq = _gaq || [];
         _gaq.push(['_setAccount', '#{ENV["GA_TRACKING_ID"]}']);
         _gaq.push(['_trackPageview']);

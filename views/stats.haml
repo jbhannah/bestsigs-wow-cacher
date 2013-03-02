@@ -5,7 +5,7 @@
     %title Best Signatures WoW Character Image Auto-Updater
 
     - if ENV["RACK_ENV"] == "production"
-      %script
+      :javascript
         var _gaq = _gaq || [];
         _gaq.push(['_setAccount', '#{ENV["GA_TRACKING_ID"]}']);
         _gaq.push(['_trackPageview']);
