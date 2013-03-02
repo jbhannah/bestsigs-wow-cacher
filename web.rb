@@ -10,6 +10,9 @@ require 'character'
 class Web < Sinatra::Base
   configure :production do
     require 'newrelic_rpm'
+    require 'gabba/gabba'
+
+    @gabba = Gabba::Gabba.new(ENV["GA_TRACKING_ID"], "bestsigs-wow-cacher.herokuapp.com")
   end
 
   configure do
@@ -80,6 +83,11 @@ class Web < Sinatra::Base
         realm:  params[:realm].titleize,
         char:   params[:char].capitalize
       })
+
+      if @gabba
+        @gabba.ip(request.ip)
+        @gabba.page_view("#{c.char} (#{c.realm}-#{c.region.upcase})", request.path)
+      end
 
       c.fetch_img
     rescue

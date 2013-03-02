@@ -14,6 +14,7 @@ gem 'maruku', '~> 0.6.1'
 group :production do
   gem 'dm-postgres-adapter', '~> 1.2.0'
   gem 'newrelic_rpm', '~> 3.5.6'
+  gem 'gabba', '~> 1.0.1'
 end
 
 group :development do
