@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.0.0'
+ruby '1.9.3', engine: 'rbx', engine_version: '2.0.0rc1'
 
 gem 'sinatra', '~> 1.3.4'
 gem 'puma', '~> 1.6.3'

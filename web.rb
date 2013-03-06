@@ -67,7 +67,7 @@ class Web < Sinatra::Base
       @bbcode += "[img]#{@url}[/img]"
       @bbcode += "[/url]"
 
-      if @@gabba
+      if defined?(@@gabba)
         @@gabba.ip(request.ip)
         @@gabba.page_view("Get character URL: #{c.char} (#{c.realm}-#{c.region.upcase})",
                          request.path + "?region=#{c.region}&realm=#{c.realm}&char=#{c.char}")
@@ -90,7 +90,7 @@ class Web < Sinatra::Base
         char:   params[:char].capitalize
       })
 
-      if @@gabba
+      if defined?(@@gabba)
         @@gabba.ip(request.ip)
         @@gabba.page_view("#{c.char} (#{c.realm}-#{c.region.upcase})", "/#{c.region}/#{c.realm}/#{c.char}.png")
       end
