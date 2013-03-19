@@ -4,7 +4,7 @@ ruby '1.9.3', engine: 'rbx', engine_version: '2.0.0rc1'
 gem 'sinatra', '~> 1.4.0'
 gem 'puma', '~> 2.0.0.b6'
 
-gem 'activesupport', '~> 3.2.11'
+gem 'activesupport', '~> 3.2.13'
 gem 'data_mapper', '~> 1.2.0'
 gem 'aws-sdk', '~> 1.8.1'
 gem 'json', '~> 1.7.6'
