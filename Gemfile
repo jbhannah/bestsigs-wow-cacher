@@ -6,14 +6,14 @@ gem 'puma', '~> 2.0.0.b7'
 
 gem 'activesupport', '~> 3.2.13'
 gem 'data_mapper', '~> 1.2.0'
-gem 'aws-sdk', '~> 1.9.1'
+gem 'aws-sdk', '~> 1.9.2'
 gem 'json', '~> 1.7.6'
 gem 'haml', '~> 4.0.2'
 gem 'maruku', '~> 0.6.1'
 
 group :production do
   gem 'dm-postgres-adapter', '~> 1.2.0'
-  gem 'newrelic_rpm', '~> 3.6.0'
+  gem 'newrelic_rpm', '~> 3.6.1'
   gem 'gabba', '~> 1.0.1'
 end
 
