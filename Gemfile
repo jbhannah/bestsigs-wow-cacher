@@ -2,11 +2,11 @@ source 'https://rubygems.org'
 ruby '1.9.3', engine: 'rbx', engine_version: '2.0.0.rc1'
 
 gem 'sinatra', '~> 1.4.2'
-gem 'puma', '~> 2.0.0.b7'
+gem 'puma', '~> 2.0.1'
 
 gem 'activesupport', '~> 3.2.13'
 gem 'data_mapper', '~> 1.2.0'
-gem 'aws-sdk', '~> 1.9.2'
+gem 'aws-sdk', '~> 1.9.5'
 gem 'json', '~> 1.7.6'
 gem 'haml', '~> 4.0.2'
 gem 'maruku', '~> 0.6.1'
