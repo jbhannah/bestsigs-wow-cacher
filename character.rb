@@ -34,7 +34,7 @@ class Character
 
     json = JSON.parse(Net::HTTP.get(api_uri))
     if json["status"] != "ok"
-      msg = "API status not ok for #{region}/#{realm}/#{char}"
+      msg = "API status not ok for #{char_path}"
       msg += ": " + json["msg"] if json["msg"]
       raise APINotOkError, msg
     end
@@ -43,7 +43,7 @@ class Character
     self.update updated_at: Time.now
   end
 
-  private
+private
   def cleanup
     Character.all(:updated_at.lt => 1.week.ago).each { |c| c.destroy } if Character.count > 9000
   end
@@ -66,7 +66,11 @@ class Character
     return uri
   end
 
+  def char_path
+    "#{region}/#{realm}/#{char}"
+  end
+
   def img_s3
-    $bucket.objects["#{region}/#{realm}/#{char}.png"]
+    $bucket.objects["#{char_path}.png"]
   end
 end
