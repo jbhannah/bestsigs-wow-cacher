@@ -15,7 +15,6 @@ class Character
   property :region,     String, required: true, format: /^[a-z]{2}$/
   property :realm,      String, required: true
   property :char,       String, required: true, format: /^[[:alpha:]]+$/
-  property :img_uri,    URI
   property :created_at, DateTime
   property :updated_at, DateTime
 
@@ -23,14 +22,14 @@ class Character
     begin
       update_img
     rescue Exception => e
-      raise e if img_uri.nil?
+      raise e unless img_s3.exists?
     end
 
-    img_uri
+    img_s3.read
   end
 
   def update_img
-    return unless updated_at < 3.hours.ago or img_uri.nil?
+    return unless updated_at < 3.hours.ago or not img_s3.exists?
 
     json = JSON.parse(Net::HTTP.get(api_uri))
     if json["status"] != "ok"
@@ -39,7 +38,8 @@ class Character
       raise APINotOkError, msg
     end
 
-    self.update img_uri: URI(json["link"]), updated_at: Time.now
+    img_s3.write(Net::HTTP.get URI(json["link"]))
+    self.update updated_at: Time.now
   end
 
   private
@@ -63,5 +63,9 @@ class Character
     })
 
     return uri
+  end
+
+  def img_s3
+    $bucket.objects["#{region}/#{realm}/#{char}.png"]
   end
 end
