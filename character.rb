@@ -18,6 +18,10 @@ class Character
   property :created_at, DateTime
   property :updated_at, DateTime
 
+  def char_path
+    "#{region}/#{realm}/#{char}"
+  end
+
   def img_uri
     begin
       update_img
@@ -64,10 +68,6 @@ private
     })
 
     return uri
-  end
-
-  def char_path
-    "#{region}/#{realm}/#{char}"
   end
 
   def img_s3

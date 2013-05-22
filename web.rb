@@ -60,7 +60,7 @@ class Web < Sinatra::Base
 
       c.update_img
 
-      @url = url("/#{c.region}/#{c.realm}/#{c.char}.png")
+      @url = url("/#{c.char_path}.png")
       armory_url = "http://#{c.region}.battle.net/wow/en/character/#{c.realm}/#{c.char}/"
 
       @bbcode  = "[url=\"#{armory_url}\"]"
@@ -92,7 +92,7 @@ class Web < Sinatra::Base
 
       if defined?(@@gabba)
         @@gabba.ip(request.ip)
-        @@gabba.page_view("#{c.char} (#{c.realm}-#{c.region.upcase})", "/#{c.region}/#{c.realm}/#{c.char}.png")
+        @@gabba.page_view("#{c.char} (#{c.realm}-#{c.region.upcase})", "/#{c.char_path}.png")
       end
 
       redirect c.img_uri, 303
