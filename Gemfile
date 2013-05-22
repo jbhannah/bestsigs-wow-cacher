@@ -7,7 +7,7 @@ gem 'puma', '~> 2.0.1'
 gem 'activesupport', '~> 3.2.13'
 gem 'data_mapper', '~> 1.2.0'
 gem 'json', '~> 1.8.0'
-gem 'haml', '~> 4.0.2'
+gem 'haml', '~> 4.0.3'
 gem 'maruku', '~> 0.6.1'
 
 group :production do
