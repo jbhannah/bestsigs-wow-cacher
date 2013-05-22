@@ -95,7 +95,7 @@ class Web < Sinatra::Base
         @@gabba.page_view("#{c.char} (#{c.realm}-#{c.region.upcase})", "/#{c.region}/#{c.realm}/#{c.char}.png")
       end
 
-      c.fetch_img
+      redirect c.img_uri, 303
     rescue
       c.destroy if c
       404
