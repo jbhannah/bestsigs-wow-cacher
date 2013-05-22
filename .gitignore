@@ -3,6 +3,7 @@
 *.sqlite3
 .bundle
 .config
+.env
 .rbx
 coverage
 InstalledFiles
