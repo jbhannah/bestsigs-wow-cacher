@@ -11,10 +11,6 @@ class Character
   before :create, :cleanup
   before :create, :titleize
 
-  before :destroy do
-    img_s3.delete
-  end
-
   property :id,         Serial
   property :region,     String, required: true, format: /^[a-z]{2}$/
   property :realm,      String, required: true
