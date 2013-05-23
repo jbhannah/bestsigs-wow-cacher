@@ -81,8 +81,6 @@ class Web < Sinatra::Base
   end
 
   get '/:region/:realm/:char.png' do
-    content_type 'image/png'
-
     begin
       c = Character.first_or_create({
         region: params[:region].downcase,
@@ -96,8 +94,9 @@ class Web < Sinatra::Base
       end
 
       redirect c.img_uri, 303
-    rescue
+    rescue Exception => e
       c.destroy if c
+      logger.error e.message
       404
     end
   end
