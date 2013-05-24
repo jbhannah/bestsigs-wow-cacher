@@ -28,7 +28,6 @@ class Character
 
   include DataMapper::Resource
 
-  before :create, :cleanup
   before :create, :titleize
 
   property :id,         Serial
@@ -64,10 +63,6 @@ class Character
   end
 
 private
-  def cleanup
-    Character.all(:updated_at.lt => 1.week.ago).each { |c| c.destroy } if Character.count > 9000
-  end
-
   def titleize
     self.region = region.downcase
     self.realm  = realm.titleize
