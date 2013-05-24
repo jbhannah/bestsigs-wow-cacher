@@ -57,11 +57,7 @@ class Character
     return unless updated_at < 3.hours.ago or not img_s3.exists?
 
     json = JSON.parse(Net::HTTP.get(api_uri))
-    if json["status"] != "ok"
-      msg = "API status not ok for #{char_path}"
-      msg += ": " + json["msg"] if json["msg"]
-      raise APINotOkError, msg
-    end
+    raise APINotOkError, json["msg"] unless json["status"] == "ok"
 
     img_s3.write(Net::HTTP.get URI(json["link"]))
     self.update updated_at: Time.now
