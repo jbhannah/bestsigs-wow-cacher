@@ -2,7 +2,6 @@ require 'rubygems'
 require 'sinatra/base'
 require 'data_mapper'
 require 'active_support/multibyte/chars'
-require 'aws/s3'
 require 'haml'
 require 'maruku'
 require 'character'
@@ -23,15 +22,6 @@ class Web < Sinatra::Base
     DataMapper::Model.raise_on_save_failure = true
     DataMapper.setup(:default, (ENV["DATABASE_URL"] || "sqlite3:///#{Dir.pwd}/development.sqlite3"))
     DataMapper.auto_upgrade!
-
-    s3 = AWS::S3.new(
-      access_key_id:     ENV["AWS_ACCESS_KEY_ID"],
-      secret_access_key: ENV["AWS_SECRET_ACCESS_KEY"])
-
-    bucket_name = "bestsigs-wow-cacher"
-    bucket_name += "-development" if development?
-
-    $bucket = s3.buckets[bucket_name]
   end
 
   set :haml, format: :html5

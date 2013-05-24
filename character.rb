@@ -1,4 +1,6 @@
 require 'active_support/core_ext'
+require 'aws/s3'
+require 'data_mapper'
 require 'net/http'
 require 'json'
 
@@ -6,6 +8,18 @@ class APINotOkError < StandardError
 end
 
 class Character
+  class << self
+    def bucket
+      bucket_name = "bestsigs-wow-cacher"
+      bucket_name += "-development" if ENV["RACK_ENV"] == "development"
+
+      @@bucket ||= AWS::S3.new(
+        access_key_id:     ENV["AWS_ACCESS_KEY_ID"],
+        secret_access_key: ENV["AWS_SECRET_ACCESS_KEY"]).buckets[bucket_name]
+      @@bucket
+    end
+  end
+
   include DataMapper::Resource
 
   before :create, :cleanup
@@ -71,6 +85,6 @@ private
   end
 
   def img_s3
-    $bucket.objects["#{char_path}.png"]
+    Character.bucket.objects["#{char_path}.png"]
   end
 end
