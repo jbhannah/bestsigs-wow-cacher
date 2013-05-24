@@ -111,5 +111,5 @@ DEPENDENCIES
   maruku (~> 0.6.1)
   newrelic_rpm
   puma (~> 2.0.1)
-  rake
+  rake (~> 10.0.4)
   sinatra (~> 1.4.2)
