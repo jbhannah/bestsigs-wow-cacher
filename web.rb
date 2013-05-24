@@ -100,7 +100,7 @@ class Web < Sinatra::Base
       redirect c.img_uri, 303
     rescue Exception => e
       c.destroy if c
-      logger.error e.message
+      logger.error "#{e.class}: #{e.message}"
       404
     end
   end
