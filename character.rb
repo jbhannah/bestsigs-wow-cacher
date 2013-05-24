@@ -4,6 +4,10 @@ require 'data_mapper'
 require 'net/http'
 require 'json'
 
+DataMapper::Model.raise_on_save_failure = true
+DataMapper.setup(:default, (ENV["DATABASE_URL"] || "sqlite3:///#{Dir.pwd}/development.sqlite3"))
+DataMapper.auto_upgrade!
+
 class APINotOkError < StandardError
 end
 
@@ -17,12 +21,6 @@ class Character
         access_key_id:     ENV["AWS_ACCESS_KEY_ID"],
         secret_access_key: ENV["AWS_SECRET_ACCESS_KEY"]).buckets[bucket_name]
       @@bucket
-    end
-
-    def dm_setup
-      DataMapper::Model.raise_on_save_failure = true
-      DataMapper.setup(:default, (ENV["DATABASE_URL"] || "sqlite3:///#{Dir.pwd}/development.sqlite3"))
-      DataMapper.auto_upgrade!
     end
   end
 
