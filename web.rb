@@ -17,6 +17,10 @@ class Web < Sinatra::Base
     enable :logging
   end
 
+  configure do
+    Character.dm_setup
+  end
+
   set :haml, format: :html5
 
   get '/' do
