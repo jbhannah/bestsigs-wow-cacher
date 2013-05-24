@@ -63,6 +63,7 @@ class Web < Sinatra::Base
       haml :get_character_url
     rescue Exception => e
       c.destroy if c
+      logger.error "#{e.class}: #{e.message}"
       "Something went wrong: " + e.message
     end
   end
