@@ -42,7 +42,7 @@ class Character
   end
 
   def armory_url
-    "http://#{c.region}.battle.net/wow/en/character/#{c.realm}/#{c.char}/"
+    "http://#{region}.battle.net/wow/en/character/#{realm}/#{char}/"
   end
 
   def img_uri
