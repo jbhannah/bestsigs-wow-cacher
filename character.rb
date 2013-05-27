@@ -1,4 +1,6 @@
 require 'active_support/core_ext'
+require 'aws/s3'
+require 'data_mapper'
 require 'net/http'
 require 'json'
 
@@ -6,9 +8,26 @@ class APINotOkError < StandardError
 end
 
 class Character
+  class << self
+    def bucket
+      bucket_name = "bestsigs-wow-cacher"
+      bucket_name += "-development" if ENV["RACK_ENV"] == "development"
+
+      @@bucket ||= AWS::S3.new(
+        access_key_id:     ENV["AWS_ACCESS_KEY_ID"],
+        secret_access_key: ENV["AWS_SECRET_ACCESS_KEY"]).buckets[bucket_name]
+      @@bucket
+    end
+
+    def dm_setup
+      DataMapper::Model.raise_on_save_failure = true
+      DataMapper.setup(:default, (ENV["DATABASE_URL"] || "sqlite3:///#{Dir.pwd}/development.sqlite3"))
+      DataMapper.auto_upgrade!
+    end
+  end
+
   include DataMapper::Resource
 
-  before :create, :cleanup
   before :create, :titleize
 
   property :id,         Serial
@@ -37,21 +56,13 @@ class Character
     return unless updated_at < 3.hours.ago or not img_s3.exists?
 
     json = JSON.parse(Net::HTTP.get(api_uri))
-    if json["status"] != "ok"
-      msg = "API status not ok for #{char_path}"
-      msg += ": " + json["msg"] if json["msg"]
-      raise APINotOkError, msg
-    end
+    raise APINotOkError, json["msg"] unless json["status"] == "ok"
 
     img_s3.write(Net::HTTP.get URI(json["link"]))
     self.update updated_at: Time.now
   end
 
 private
-  def cleanup
-    Character.all(:updated_at.lt => 1.week.ago).each { |c| c.destroy } if Character.count > 9000
-  end
-
   def titleize
     self.region = region.downcase
     self.realm  = realm.titleize
@@ -71,6 +82,6 @@ private
   end
 
   def img_s3
-    $bucket.objects["#{char_path}.png"]
+    Character.bucket.objects["#{char_path}.png"]
   end
 end
