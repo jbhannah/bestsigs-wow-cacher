@@ -3,6 +3,7 @@ ruby '1.9.3', engine: 'rbx', engine_version: '2.0.0.rc1'
 
 gem 'sinatra', '~> 1.4.2'
 gem 'puma', '~> 2.0.1'
+gem 'rake', '~> 10.0.4'
 
 gem 'activesupport', '~> 3.2.13'
 gem 'data_mapper', '~> 1.2.0'
