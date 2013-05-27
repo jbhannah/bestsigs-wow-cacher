@@ -29,6 +29,7 @@ class Character
   include DataMapper::Resource
 
   before :create, :titleize
+  before :destroy, :delete_img
 
   property :id,         Serial
   property :region,     String, required: true, format: /^[a-z]{2}$/
@@ -92,6 +93,10 @@ private
     })
 
     return uri
+  end
+
+  def delete_img
+    img_s3.delete if img_s3.exists?
   end
 
   def img_s3
