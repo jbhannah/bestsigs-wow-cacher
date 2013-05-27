@@ -52,7 +52,6 @@ class Character
       Thread.new { update_img } unless @updating
     end
 
-    img_s3.acl = :public_read
     img_s3.public_url
   end
 
@@ -66,6 +65,8 @@ class Character
       raise APINotOkError, json["msg"] unless json["status"] == "ok"
 
       img_s3.write(Net::HTTP.get URI(json["link"]))
+      img_s3.acl = :public_read
+
       self.update updated_at: Time.now
     rescue Exception => e
       raise e unless img_s3.exists?
