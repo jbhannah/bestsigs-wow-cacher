@@ -46,10 +46,10 @@ class Character
   end
 
   def img_uri
-    begin
+    unless img_s3.exists?
       update_img
-    rescue Exception => e
-      raise e unless img_s3.exists?
+    else
+      Thread.new { update_img } unless @updating
     end
 
     img_s3.acl = :public_read
@@ -59,11 +59,19 @@ class Character
   def update_img
     return unless updated_at < 3.hours.ago or not img_s3.exists?
 
-    json = JSON.parse(Net::HTTP.get(api_uri))
-    raise APINotOkError, json["msg"] unless json["status"] == "ok"
+    begin
+      @updating = true
 
-    img_s3.write(Net::HTTP.get URI(json["link"]))
-    self.update updated_at: Time.now
+      json = JSON.parse(Net::HTTP.get(api_uri))
+      raise APINotOkError, json["msg"] unless json["status"] == "ok"
+
+      img_s3.write(Net::HTTP.get URI(json["link"]))
+      self.update updated_at: Time.now
+    rescue Exception => e
+      raise e unless img_s3.exists?
+    ensure
+      @updating = false
+    end
   end
 
 private
