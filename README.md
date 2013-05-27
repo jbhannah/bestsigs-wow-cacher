@@ -1,5 +1,4 @@
-bestsigs-wow-cacher
-===================
+# bestsigs-wow-cacher
 
 [![Dependency Status](https://gemnasium.com/jbhannah/bestsigs-wow-cacher.png)](https://gemnasium.com/jbhannah/bestsigs-wow-cacher)
 
@@ -7,8 +6,7 @@ Uses the [Best Signatures API](http://www.best-signatures.com/api/) to
 generate, display, and refresh World of Warcraft character signature
 graphics.
 
-How it works
-------------
+## How it works
 
 [Best Signatures](http://www.best-signatures.com/wow/) is my personal
 favorite forum signature image generator for [World of
@@ -30,11 +28,10 @@ What this simple [Sinatra](http://www.sinatrarb.com/) app does is:
      redirect to the image's URL on S3.
 
   4. After a time delay (currently three hours), repeats steps 2 and 3
-     to generate and save a new image, overwriting the old image URL
-     for that character.
+     to generate and save a new image, overwriting the old image for
+     that character.
 
-How to use it
--------------
+## How to use it
 
 The [homepage](http://bestsigs-wow-cacher.herokuapp.com/) now includes
 an HTML form that can be used to generate the image URL given the
@@ -59,8 +56,7 @@ What the image looks like:
 
 ![US-Earthen Ring/Adarystus](http://bestsigs-wow-cacher.herokuapp.com/us/Earthen%20Ring/Adarystus.png)
 
-What it doesn't do yet
-----------------------
+## What it doesn't do yet
 
   * Let you specify what kind of signature graphic to generate. I have
     lots of characters and like having them all displayed, and I prefer
