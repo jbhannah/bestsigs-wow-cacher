@@ -51,17 +51,13 @@ class Web < Sinatra::Base
 
       c.update_img
 
-      @url = url("/#{c.char_path}.png")
-      armory_url = "http://#{c.region}.battle.net/wow/en/character/#{c.realm}/#{c.char}/"
-
-      @bbcode  = "[url=\"#{armory_url}\"]"
-      @bbcode += "[img]#{@url}[/img]"
-      @bbcode += "[/url]"
+      @url    = url("/#{c.char_path}.png")
+      @bbcode = "[url=\"#{c.armory_url}\"][img]#{@url}[/img][/url]"
 
       if defined?(@@gabba)
         @@gabba.ip(request.ip)
         @@gabba.page_view("Get character URL: #{c.char} (#{c.realm}-#{c.region.upcase})",
-                         request.path + "?region=#{c.region}&realm=#{c.realm}&char=#{c.char}")
+                          request.path + "?region=#{c.region}&realm=#{c.realm}&char=#{c.char}")
       end
 
       haml :get_character_url
