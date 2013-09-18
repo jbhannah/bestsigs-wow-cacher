@@ -89,7 +89,7 @@ private
       region: region,
       realm:  realm,
       char:   char,
-      type:   "Sign9"
+      type:   "Sign3"
     })
 
     return uri
