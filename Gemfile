@@ -7,7 +7,7 @@ gem 'rake', '~> 10.0.4'
 
 gem 'activesupport', '~> 3.2.13'
 gem 'data_mapper', '~> 1.2.0'
-gem 'aws-sdk', '~> 1.11.0'
+gem 'aws-sdk', '~> 1.28.1'
 gem 'json', '~> 1.8.0'
 gem 'haml', '~> 4.0.3'
 gem 'kramdown', '~> 1.2.0'
