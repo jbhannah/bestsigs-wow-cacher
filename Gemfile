@@ -10,7 +10,9 @@ gem 'data_mapper', '~> 1.2.0'
 gem 'aws-sdk', '~> 1.11.0'
 gem 'json', '~> 1.8.0'
 gem 'haml', '~> 4.0.3'
-gem 'maruku', '~> 0.6.1'
+gem 'kramdown', '~> 1.2.0'
+
+gem 'rubysl', '~> 2.0', platform: :rbx
 
 group :production do
   gem 'dm-postgres-adapter', '~> 1.2.0'

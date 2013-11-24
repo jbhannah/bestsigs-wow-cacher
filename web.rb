@@ -2,7 +2,7 @@ require 'rubygems'
 require 'sinatra/base'
 require 'active_support/multibyte/chars'
 require 'haml'
-require 'maruku'
+require 'kramdown'
 require 'character'
 
 class Web < Sinatra::Base
