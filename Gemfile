@@ -13,6 +13,7 @@ gem 'haml', '~> 4.0.3'
 gem 'kramdown', '~> 1.2.0'
 
 gem 'rubysl', '~> 2.0', platform: :rbx
+gem 'racc', '~> 1.4.10'
 
 group :production do
   gem 'dm-postgres-adapter', '~> 1.2.0'
