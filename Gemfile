@@ -2,15 +2,15 @@ source 'https://rubygems.org'
 ruby '2.1.0', engine: 'rbx', engine_version: '2.2.1'
 
 gem 'sinatra', '~> 1.4.2'
-gem 'puma', '~> 2.0.1'
-gem 'rake', '~> 10.0.4'
+gem 'puma', '~> 2.7.1'
+gem 'rake', '~> 10.1.1'
 
-gem 'activesupport', '~> 3.2.13'
+gem 'activesupport', '~> 4.0.2'
 gem 'data_mapper', '~> 1.2.0'
-gem 'aws-sdk', '~> 1.28.1'
+gem 'aws-sdk', '~> 1.31.3'
 gem 'json', '~> 1.8.0'
 gem 'haml', '~> 4.0.3'
-gem 'kramdown', '~> 1.2.0'
+gem 'kramdown', '~> 1.3.0'
 
 gem 'rubysl', '~> 2.0', platform: :rbx
 gem 'racc', '~> 1.4.10'
