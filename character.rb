@@ -10,7 +10,7 @@ end
 class Character
   class << self
     def bucket
-      bucket_name = "bestsigs-wow-cacher"
+      bucket_name = ENV["AWS_S3_BUCKET"]
       bucket_name += "-development" if ENV["RACK_ENV"] == "development"
 
       @@bucket ||= AWS::S3.new(
